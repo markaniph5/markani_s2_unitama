@@ -4,20 +4,30 @@ declare(strict_types=1);
 namespace Markani\Tugas1\App;
 
 class Algorithm {
-    public function selectionSort(array $arr): array {
+    public function quickSort(array $arr): array {
         $n = count($arr);
-        for ($i = 0; $i < $n - 1; $i++) {
-            $minIndex = $i;
-            for ($j = $i + 1; $j < $n; $j++) {
-                if ($arr[$j] < $arr[$minIndex]) {
-                    $minIndex = $j;
-                }
-            }
-            if ($minIndex !== $i) {
-                [$arr[$i], $arr[$minIndex]] = [$arr[$minIndex], $arr[$i]];
+        if ($n <= 1) {
+            return $arr;
+        }
+
+        // choose pivot (middle element)
+        $pivot = $arr[intdiv($n, 2)];
+
+        $left = [];
+        $equal = [];
+        $right = [];
+
+        foreach ($arr as $value) {
+            if ($value < $pivot) {
+                $left[] = $value;
+            } elseif ($value > $pivot) {
+                $right[] = $value;
+            } else {
+                $equal[] = $value;
             }
         }
-        return $arr;
+
+        return array_merge($this->quickSort($left), $equal, $this->quickSort($right));
     }
 
     public function insertionSort(array $arr): array {
