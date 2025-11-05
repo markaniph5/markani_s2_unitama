@@ -19,3 +19,9 @@
 ```sh
 latexmk -xelatex tugas_report.tex 
 ```
+
+# On Windows
+
+```sh
+vendor\bin\phpunit.bat --coverage-html reports/html --coverage-filter src/tests/InsertionShort1000DataTest.php
+```
