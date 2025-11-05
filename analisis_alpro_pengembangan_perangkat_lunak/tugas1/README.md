@@ -15,3 +15,7 @@
 ```sh
 ./vendor/bin/phpunit --coverage-html reports/html --coverage-filter src tests/InsertionShort1000DataTest.php
 ```
+
+```sh
+latexmk -xelatex tugas_report.tex 
+```

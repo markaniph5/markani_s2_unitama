@@ -1,0 +1,160 @@
+% !TeX program = xelatex
+% disertasi.tex — Template XeLaTeX (versi bersih & rapi)
+\documentclass[12pt,a4paper,oneside]{report}
+
+% ---------------- Layout & Paket Dasar ----------------
+\usepackage[a4paper, top=4cm, left=3cm, right=3cm, bottom=3cm]{geometry}
+% \usepackage{showframe}    % untuk menampilkan margin (bisa dihapus nanti)
+\usepackage{setspace}      % untuk kontrol spasi
+\usepackage{titlesec}      % untuk atur ukuran heading
+\usepackage{float}         % untuk kontrol posisi gambar/tabel
+% Reduce top space before chapter title
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+\usepackage{graphicx}      % untuk gambar
+\usepackage{listings}      % untuk "Daftar Tampilan" (kode/program)
+\usepackage{caption}       % kontrol caption
+\usepackage{indentfirst}   % ✅ buat paragraf pertama setiap bab ikut menjorok
+\usepackage{ragged2e}      % ✅ menyediakan \justifying
+
+% ---------------- Bahasa & Font (XeLaTeX) --------------
+\usepackage{polyglossia}
+\setmainlanguage{bahasai}  % ✅ gunakan bahasa Indonesia (tanpa warning)
+\usepackage{fontspec}
+\setmainfont{Times New Roman} % ganti ke TeX Gyre Termes bila TNR tidak tersedia
+
+% ---------------- Penamaan elemen Indonesia ------------
+\addto\captionsbahasai{%
+  \renewcommand{\contentsname}{Daftar Isi}%
+  \renewcommand{\listfigurename}{Daftar Gambar}%
+  \renewcommand{\listtablename}{Daftar Tabel}%
+  \renewcommand{\lstlistlistingname}{Daftar Tampilan}%
+  \renewcommand{\abstractname}{Abstrak}%
+}
+
+% ---------------- Ukuran heading -----------------------
+% Judul Bab = 14pt bold
+\titleformat{\chapter}
+  {\bfseries\fontsize{14pt}{16pt}\selectfont}
+  {\thechapter}{1em}{}
+% Subjudul (section, subsection) = 13pt bold
+\titleformat{\section}
+  {\bfseries\fontsize{13pt}{15pt}\selectfont}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\bfseries\fontsize{13pt}{15pt}\selectfont}
+  {\thesubsection}{1em}{}
+
+% ---------------- Bibliografi (spasi 1) ----------------
+\usepackage[backend=biber,style=ieee,sorting=nyt,autolang=other]{biblatex}
+\DeclareLanguageMapping{bahasa}{english}
+\DeclareLanguageMapping{bahasai}{english}
+\addbibresource{references.bib}
+\AtBeginBibliography{\singlespacing}
+
+% ---------------- Listings (opsional) -------------------
+\lstset{
+  basicstyle=\ttfamily\small,
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=5pt,
+  frame=single,
+  breaklines=true
+}
+
+% =======================================================
+\begin{document}
+
+  % ===================== HALAMAN JUDUL (spasi 1) =====================
+  \begin{titlepage}
+      \thispagestyle{empty}
+      \begin{center}
+          \Large{\textbf{KECERDASAN BUATAN LANJUT}}\\[0.5cm]
+          \Large{\textbf{TUGAS KULIAH}}\\[0.5cm]
+
+          \large{\textbf{disusun oleh}}\\
+          \large{\textbf{Benny Leonard Enrico Panggabean}}\\
+          \large{\textbf{D063251008}}\\[2cm]
+
+          \includegraphics[width=5cm]{Logo-Resmi-Unhas-1.png}\\[1.5cm]
+
+          \large{\textbf{PROGRAM STUDI DOKTOR TEKNIK INFORMATIKA}}\\
+          \large{\textbf{FAKULTAS TEKNIK}}\\
+          \large{\textbf{UNIVERSITAS HASANUDDIN}}\\
+          \large{\textbf{MAKASSAR}}\\
+          \large{\textbf{2025}}\\
+      \end{center}
+  \end{titlepage}
+  % ===================== TEKS UTAMA (spasi 1.5) ======================
+  \onehalfspacing
+  \justifying
+  \chapter{Pendahuluan}
+    Tugas Kuliah disusun sesuai dengan arahan yang diberikan oleh dosen pemateri perkuliahan,
+    dimana tugas ini menjadikan topik tugas akhir sebagai bahan kajian dan pembahasan dalam penyusunan tugas kuliah ini.
+    Draft tugas akhir yang disusun pada tugas kuliah ini masih bersifat sementara dan akan terus dikembangkan
+    sehingga menjadi tugas akhir yang lengkap dan utuh. Judul tugas akhir yang diambil adalah
+    \textit{“DATA ALIGNMENT BERBASIS PROBABILISTIC ENTITY RESOLUTION DAN DETEKSI ANOMALI KEPATUHAN YANG TERINTEGRASI DENGAN RETRIEVAL AUGMENTED GENERATION.”}
+    Secara ringkas, alur penelitian dapat dijelaskan melalui konsep berikut:
+    \vspace{0.5\baselineskip}
+    Data SIAKAD dan FEEDER $\rightarrow$ Entity Resolution $\rightarrow$ Anomaly Detection $\rightarrow$ RAG (QA berbukti regulasi + data).
+    \vspace{0.5\baselineskip}
+    secara umum gambar kerangka konseptual dapat dilihat pada Gambar diagaram pada halaman berikutnya,
+    dapat dijelaskan bahwa data SIAKAD dan FEEDER yang berasal dari sumber berbeda
+    akan dilakukan proses \textit{Entity Resolution} untuk menyelaraskan data tersebut.
+    Setelah data selaras, dilakukan proses \textit{Anomaly Detection} untuk mendeteksi ketidakpatuhan data
+    terhadap regulasi yang berlaku. Akhirnya, data yang telah melalui proses-proses tersebut
+    akan digunakan dalam sistem \textit{Retrieval Augmented Generation} (RAG)
+    untuk menjawab pertanyaan-pertanyaan terkait regulasi dan data yang ada.
+    \par
+      tahap pertama yang dilakukan adalah pengambilan data dari FEEDER DIKTI melalui API yang disediakan.
+      Data yang diambil meliputi data mahasiswa, data dosen, data mata kuliah, data nilai, dan data lainnya yang relevan.
+      Data ini kemudian akan disimpan dalam basis data lokal untuk proses selanjutnya.
+    \par 
+      \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.7\linewidth]{DiagramKerangkaKonseptual.png}
+          \caption*{Diagram Kerangka Konseptual}
+      \end{figure}
+
+      \vspace{0.5\baselineskip}
+      \justifying
+
+      Proses pengambilan data dari FEEDER DIKTI melalui API dilakukan dengan menggunakan
+      bahasa pemrograman Rust, dengan menggunakan metode paginasi untuk mengambil data
+      dalam jumlah besar. Data yang diambil kemudian disimpan dalam basis data lokal
+      menggunakan RDBMS PostgreSQL. Proses ini memastikan bahwa data yang diambil konsisten dengan data yang ada di FEEDER DIKTI dan yang diambil.
+    \par
+      proses pengambilan data terjadi dua proses, proses pertama adalah proses pengambilan data dengan pengambilan data sebanyak 1000 data per halaman, data tersebut disimpan
+      dalam proses antrian (queue) untuk diproses pada tahap selanjutnya.
+      Proses kedua adalah proses penyimpanan data dari antrian ke basis data lokal PostgreSQL, proses ini melakukan proses upsert data, dimana jika data sudah ada maka data akan diperbarui,
+      jika data belum ada maka data akan disisipkan sebagai data baru.
+      Proses ini memastikan bahwa data yang disimpan dalam basis data lokal selalu up-to-date dengan data yang ada di FEEDER DIKTI. 
+
+      \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.7\linewidth]{task.png}
+          \caption*{Task}
+      \end{figure}
+
+    \par
+      gambar diatas menunjukkan proses pengambilan data dari FEEDER DIKTI melalui API,
+      dimana proses pengambilan data dilakukan secara bertahap dengan menggunakan metode paginasi.
+      Data yang diambil kemudian disimpan dalam basis data lokal PostgreSQL untuk proses selanjutnya.
+      Proses ini memastikan bahwa data yang diambil konsisten dengan data yang ada di FEEDER DIKTI dan yang diambil.
+      sedangkan gambar berikut adalah gambar ketika proses upsert data ke basis data lokal PostgreSQL.\
+      \begin{figure}[H]
+          \centering
+          \includegraphics[width=0.7\linewidth]{worker.png}
+          \caption*{Worker}
+      \end{figure}
+  \chapter{Penutup}
+    Tugas kuliah ini merupakan bagian dari proses penyusunan tugas akhir yang berjudul
+    \textit{“DATA ALIGNMENT BERBASIS PROBABILISTIC ENTITY RESOLUTION DAN DETEKSI ANOMALI KEPATUHAN YANG TERINTEGRASI DENGAN RETRIEVAL AUGMENTED GENERATION.”}
+    dimana tugas kuliah ini membahas tentang pengambilan data dari FEEDER DIKTI melalui API
+    dan penyimpanan data dalam basis data lokal PostgreSQL.
+    Proses pengambilan data dilakukan dengan menggunakan bahasa pemrograman Rust
+    dan metode paginasi untuk mengambil data dalam jumlah besar.
+    Data yang diambil kemudian disimpan dalam basis data lokal menggunakan RDBMS PostgreSQL.
+    Proses ini memastikan bahwa data yang diambil konsisten dengan data yang ada di FEEDER DIKTI dan yang diambil.
+    Tugas kuliah ini akan terus dikembangkan sebagai bagian dari penyusunan tugas akhir yang lengkap dan utuh.
+\end{document}

@@ -1,0 +1,93 @@
+% !TeX program = xelatex
+% disertasi.tex — Template XeLaTeX (versi bersih & rapi)
+\documentclass[12pt,a4paper,oneside]{report}
+
+% ---------------- Layout & Paket Dasar ----------------
+\usepackage[a4paper, top=4cm, left=3cm, right=3cm, bottom=3cm]{geometry}
+% \usepackage{showframe}    % untuk menampilkan margin (bisa dihapus nanti)
+\usepackage{setspace}      % untuk kontrol spasi
+\usepackage{titlesec}      % untuk atur ukuran heading
+\usepackage{float}         % untuk kontrol posisi gambar/tabel
+% Reduce top space before chapter title
+\titlespacing*{\chapter}{0pt}{-20pt}{20pt}
+\usepackage{graphicx}      % untuk gambar
+\usepackage{listings}      % untuk "Daftar Tampilan" (kode/program)
+\usepackage{caption}       % kontrol caption
+\usepackage{indentfirst}   % ✅ buat paragraf pertama setiap bab ikut menjorok
+\usepackage{ragged2e}      % ✅ menyediakan \justifying
+
+% ---------------- Bahasa & Font (XeLaTeX) --------------
+\usepackage{polyglossia}
+\setmainlanguage{bahasai}  % ✅ gunakan bahasa Indonesia (tanpa warning)
+\usepackage{fontspec}
+\setmainfont{Times New Roman} % ganti ke TeX Gyre Termes bila TNR tidak tersedia
+
+% ---------------- Penamaan elemen Indonesia ------------
+\addto\captionsbahasai{%
+  \renewcommand{\contentsname}{Daftar Isi}%
+  \renewcommand{\listfigurename}{Daftar Gambar}%
+  \renewcommand{\listtablename}{Daftar Tabel}%
+  \renewcommand{\lstlistlistingname}{Daftar Tampilan}%
+  \renewcommand{\abstractname}{Abstrak}%
+}
+
+% ---------------- Ukuran heading -----------------------
+% Judul Bab = 14pt bold
+\titleformat{\chapter}
+  {\bfseries\fontsize{14pt}{16pt}\selectfont}
+  {\thechapter}{1em}{}
+% Subjudul (section, subsection) = 13pt bold
+\titleformat{\section}
+  {\bfseries\fontsize{13pt}{15pt}\selectfont}
+  {\thesection}{1em}{}
+\titleformat{\subsection}
+  {\bfseries\fontsize{13pt}{15pt}\selectfont}
+  {\thesubsection}{1em}{}
+
+% ---------------- Bibliografi (spasi 1) ----------------
+\usepackage[backend=biber,style=ieee,sorting=nyt,autolang=other]{biblatex}
+\DeclareLanguageMapping{bahasa}{english}
+\DeclareLanguageMapping{bahasai}{english}
+\addbibresource{references.bib}
+\AtBeginBibliography{\singlespacing}
+
+% ---------------- Listings (opsional) -------------------
+\lstset{
+  basicstyle=\ttfamily\small,
+  numbers=left,
+  numberstyle=\tiny,
+  stepnumber=1,
+  numbersep=5pt,
+  frame=single,
+  breaklines=true
+}
+
+% =======================================================
+\begin{document}
+
+  % ===================== HALAMAN JUDUL (spasi 1) =====================
+  \begin{titlepage}
+      \thispagestyle{empty}
+      \begin{center}
+          \Large{\textbf{ANALISIS ALGORITHMA DAN PENGEMBANGAN PERANGKAT LUNAK}}\\[0.5cm]
+          \Large{\textbf{TUGAS KULIAH}}\\[0.5cm]
+
+          \large{\textbf{disusun oleh}}\\
+          \large{\textbf{Markani}}\\
+          \large{\textbf{25201201010}}\\[2cm]
+
+          \includegraphics[width=5cm]{lambang-unitama-512-512.png}\\[1.5cm]
+
+          \large{\textbf{PROGRAM STUDI MAGISTER ILMU KOMPUTER}}\\
+          \large{\textbf{UNIVERSITAS TEKNOLOGI AKBA}}\\
+          \large{\textbf{MAKASSAR}}\\
+          \large{\textbf{2025}}\\
+      \end{center}
+  \end{titlepage}
+  % ===================== TEKS UTAMA (spasi 1.5) ======================
+  \onehalfspacing
+  \justifying
+  \chapter{Pendahuluan}
+    Tugas Kuliah disusun sesuai dengan arahan yang diberikan oleh dosen pemateri perkuliahan,
+    
+\end{document}
