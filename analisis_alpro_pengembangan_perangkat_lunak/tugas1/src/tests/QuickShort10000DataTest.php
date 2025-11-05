@@ -1,11 +1,12 @@
-<?php declare(strict_types=1);
+<?php
+declare(strict_types=1);
 use PHPUnit\Framework\TestCase;
 use Markani\Tugas1\App\Algorithm;
 
-final class SelectionShort1000DataTest extends TestCase
+final class QuickShort10000DataTest extends TestCase
 {
 
-    public function testAlgoithmQuickSortInputTenThaousandOutputAreEquals(): void
+    public function testAlgoithmQuickSortSecondCase(): void
     {
         // generate data
         $total_data = 10000;

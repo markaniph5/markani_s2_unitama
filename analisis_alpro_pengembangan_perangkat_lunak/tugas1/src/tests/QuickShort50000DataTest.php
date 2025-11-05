@@ -2,9 +2,9 @@
 use PHPUnit\Framework\TestCase;
 use Markani\Tugas1\App\Algorithm;
 
-final class SelectionShort1000DataTest extends TestCase
+final class QuickShort50000DataTest extends TestCase
 {
-    public function testAlgoithmQuickSortInputFivetyThaousandOutputAreEquals(): void
+    public function testAlgoithmQuickSortThirdCase(): void
     {
         // generate data
         $total_data = 50000;

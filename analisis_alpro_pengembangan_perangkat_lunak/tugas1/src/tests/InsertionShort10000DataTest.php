@@ -5,7 +5,7 @@ use Markani\Tugas1\App\Algorithm;
 final class InsertionShort10000DataTest extends TestCase
 {
 
-    public function testAlgoithmInsertionSortInputTenThaousandOutputAreEquals(): void
+    public function testAlgoithmInsertionSortSecondCase(): void
     {
         // generate data
         $total_data = 10000;
